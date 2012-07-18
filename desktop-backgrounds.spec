@@ -5,7 +5,7 @@
 
 Name:           desktop-backgrounds
 Version:        17.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 Group:          User Interface/Desktops
@@ -218,6 +218,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Wed Jul 18 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 17.0.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Tue Feb 07 2012 Martin Sourada <mso@fedoraproject.org> - 17.0.0-1
 - Switch to Beefy Miracle
 
