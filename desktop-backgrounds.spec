@@ -1,11 +1,11 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name beefy-miracle
-%global Fedora_Release_Name Beefy_Miracle
+%global fedora_release_name spherical-cow
+%global Fedora_Release_Name Spherical_Cow
 
 Name:           desktop-backgrounds
-Version:        17.0.0
-Release:        2%{?dist}
+Version:        18.0.0
+Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
 Group:          User Interface/Desktops
@@ -38,11 +38,7 @@ desktop background image.
 %package        gnome
 Summary:        The default Fedora wallpaper from GNOME desktop
 Group:          User Interface/Desktops
-%if 0%{?fedora} == 15
-Requires:       lovelock-backgrounds-stripes-gnome
-%else
 Requires:       %{fedora_release_name}-backgrounds-gnome
-%endif
 # starting with this release, gnome uses picture-uri instead of picture-filename
 # see gnome bz #633983
 Requires:       gsettings-desktop-schemas >= 2.91.92
@@ -143,14 +139,9 @@ ln -s ../../../../backgrounds/waves/waves-wide-3-night.png 1920x1200.png
 #   for GNOME
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
 /bin/echo '[org.gnome.desktop.background]' > \
-    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/org.gnome.desktop.background.fedora.gschema.override
-%if 0%{?fedora} == 15
-/bin/echo "picture-uri='file://%{_datadir}/backgrounds/lovelock/default-stripes/lovelock.xml'" >> \
-    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/org.gnome.desktop.background.fedora.gschema.override
-%else
+    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
 /bin/echo "picture-uri='file://%{_datadir}/backgrounds/%{fedora_release_name}/default/%{fedora_release_name}.xml'" >> \
-    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/org.gnome.desktop.background.fedora.gschema.override
-%endif
+    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
 #   for KDE, this is handled in kde-settings
 #   for XFCE
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/xfce4/backdrops
@@ -206,7 +197,7 @@ fi
 
 %files gnome
 %defattr(-, root, root)
-%{_datadir}/glib-2.0/schemas/org.gnome.desktop.background.fedora.gschema.override
+%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
 
 %files xfce
 %defattr(-, root, root)
@@ -218,6 +209,11 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Mon Aug 20 2012 Martin Sourada <mso@fedoraproject.org> - 18.0.0-1
+- Switch to Spherical Cow
+- Add priority number to gschema override filename
+- Drop Fedora 15 conditionals
+
 * Wed Jul 18 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 17.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
