@@ -5,7 +5,7 @@
 
 Name:           desktop-backgrounds
 Version:        18.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 Group:          User Interface/Desktops
@@ -209,6 +209,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 18.0.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Mon Aug 20 2012 Martin Sourada <mso@fedoraproject.org> - 18.0.0-1
 - Switch to Spherical Cow
 - Add priority number to gschema override filename
