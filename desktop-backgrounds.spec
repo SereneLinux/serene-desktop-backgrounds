@@ -1,14 +1,14 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name spherical-cow
-%global Fedora_Release_Name Spherical_Cow
+%global fedora_release_name schroedinger-cat
+%global gnome_default default-animated
+%global picture_ext jpg
 
 Name:           desktop-backgrounds
-Version:        18.0.0
-Release:        2%{?dist}
+Version:        19.0.0
+Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
-Group:          User Interface/Desktops
 License:        LGPLv2
 Source0:        redhat-backgrounds-%{rh_backgrounds_version}.tar.bz2
 Source2:        Propaganda-1.0.0.tar.gz
@@ -17,8 +17,11 @@ Source5:        waves-%{waves_version}.tar.bz2
 Source6:        FedoraWaves-metadata.desktop
 Source7:        desktop-backgrounds-fedora.xml
 Source8:        fedora-metadata.desktop
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
+%if %{picture_ext} != png
+BuildRequires:   ImageMagick
+BuildRequires:   %{fedora_release_name}-backgrounds-base
+%endif
 
 %description
 The desktop-backgrounds package contains artwork intended to be used as
@@ -27,7 +30,6 @@ desktop background image.
 
 %package        basic
 Summary:        Desktop backgrounds
-Group:          User Interface/Desktops
 Provides:       desktop-backgrounds = %{version}-%{release}
 Obsoletes:      desktop-backgrounds < %{version}-%{release}
 
@@ -37,7 +39,6 @@ desktop background image.
 
 %package        gnome
 Summary:        The default Fedora wallpaper from GNOME desktop
-Group:          User Interface/Desktops
 Requires:       %{fedora_release_name}-backgrounds-gnome
 # starting with this release, gnome uses picture-uri instead of picture-filename
 # see gnome bz #633983
@@ -48,21 +49,9 @@ License:        CC-BY-SA
 %description    gnome
 The desktop-backgrounds-gnome package sets default background in gnome.
 
-%package        xfce
-Summary:        The default Fedora wallpaper from XFCE desktop
-Group:          User Interface/Desktops
-Requires:       %{fedora_release_name}-backgrounds-xfce
-Provides:       system-backgrounds-xfce = %{version}-%{release}
-License:        CC-BY-SA
-
-%description    xfce
-The desktop-backgrounds-xfce package contains file-names used by XFCE desktop
-environment to set up the default backdrop.
-
 %package        compat
 Summary:        The default Fedora wallpaper for less common DEs
-Group:          User Interface/Desktops
-Requires:       %{fedora_release_name}-backgrounds-single
+Requires:       %{fedora_release_name}-backgrounds-base
 Provides:       system-backgrounds-compat = %{version}-%{release}
 License:        CC-BY-SA
 
@@ -73,7 +62,6 @@ default wallpaper.
 
 %package        waves
 Summary:        Desktop backgrounds for the Waves theme
-Group:          User Interface/Desktops
 
 %description    waves
 The desktop-backgrounds-waves package contains the "Waves" desktop backgrounds
@@ -95,8 +83,6 @@ mv images/space/README* .
 tar xjf %{SOURCE5}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/share/backgrounds
 cd $RPM_BUILD_ROOT%{_prefix}/share/backgrounds
 
@@ -140,28 +126,35 @@ ln -s ../../../../backgrounds/waves/waves-wide-3-night.png 1920x1200.png
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
 /bin/echo '[org.gnome.desktop.background]' > \
     $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
-/bin/echo "picture-uri='file://%{_datadir}/backgrounds/%{fedora_release_name}/default/%{fedora_release_name}.xml'" >> \
+/bin/echo "picture-uri='file://%{_datadir}/backgrounds/%{fedora_release_name}/%{gnome_default}/%{fedora_release_name}.xml'" >> \
     $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
 #   for KDE, this is handled in kde-settings
-#   for XFCE
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/xfce4/backdrops
-/bin/ln -s %{fedora_release_name}.png \
-           $RPM_BUILD_ROOT%{_datadir}/xfce4/backdrops/default.png
-#   and for the rest (e.g. LXDE)
-(cd $RPM_BUILD_ROOT%{_datadir}/backgrounds/images;
-ln -s ../%{fedora_release_name}/default/standard/%{fedora_release_name}.png \
+#   for XFCE, LXDE, etc.
+%if %{picture_ext} == png
+  (cd $RPM_BUILD_ROOT%{_datadir}/backgrounds/images;
+  ln -s ../%{fedora_release_name}/default/standard/%{fedora_release_name}.png\
       default.png
-ln -s ../%{fedora_release_name}/default/normalish/%{fedora_release_name}.png \
+  ln -s ../%{fedora_release_name}/default/normalish/%{fedora_release_name}.png \
       default-5_4.png
-ln -s ../%{fedora_release_name}/default/wide/%{fedora_release_name}.png \
+  ln -s ../%{fedora_release_name}/default/wide/%{fedora_release_name}.png \
       default-16_10.png
-cd ..
-ln -s ./%{fedora_release_name}/default/standard/%{fedora_release_name}.png \
+  cd ..
+  ln -s ./%{fedora_release_name}/default/standard/%{fedora_release_name}.png \
       default.png
-)
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+  )
+%else
+  (cd $RPM_BUILD_ROOT%{_datadir}/backgrounds/images;
+  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/standard/%{fedora_release_name}.%{picture_ext}\
+        -alpha off default.png
+  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/normalish/%{fedora_release_name}.%{picture_ext}\
+        -alpha off default-5_4.png
+  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/wide/%{fedora_release_name}.%{picture_ext}\
+        -alpha off default-16_10.png
+  cd ..
+  ln -s ./images/default-16_10.png \
+        default.png
+  )
+%endif
 
 %posttrans gnome
 glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
@@ -172,7 +165,6 @@ if [ $1 -eq 0 ]; then
 fi
 
 %files basic
-%defattr(-, root, root)
 %dir %{_datadir}/backgrounds
 %dir %{_datadir}/backgrounds/tiles
 %dir %{_datadir}/backgrounds/images
@@ -188,7 +180,6 @@ fi
 %dir %{_datadir}/wallpapers
 
 %files waves
-%defattr(-, root, root)
 %dir %{_datadir}/backgrounds/waves
 %{_datadir}/backgrounds/waves/*.png
 %{_datadir}/backgrounds/waves/waves.xml
@@ -196,19 +187,19 @@ fi
 %{_datadir}/wallpapers/Fedora_Waves
 
 %files gnome
-%defattr(-, root, root)
 %{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
 
-%files xfce
-%defattr(-, root, root)
-%{_datadir}/xfce4/backdrops/default.png
-
 %files compat
-%defattr(-, root, root)
 %{_datadir}/backgrounds/images/default*
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Tue Mar 12 2013 Martin Sourada <mso@fedoraproject.org> - 19.0.0-1
+- Switch to Schrödinger's cat
+- As the original images are jpg, conver them to pngs instead of symlinking
+  - This requires rebuild whenever schroedinger-cat-backgrounds-base is updated
+- Drop -xfce subpackage, xfce uses the -compat one as well
+
 * Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 18.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
