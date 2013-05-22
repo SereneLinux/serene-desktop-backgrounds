@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        19.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -194,6 +194,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Wed May 22 2013 Martin Sourada <mso@fedoraproject.org> - 19.0.0-2
+- Rebuild against new schroedinger-cat-backgrounds
+
 * Tue Mar 12 2013 Martin Sourada <mso@fedoraproject.org> - 19.0.0-1
 - Switch to Schrödinger's cat
 - As the original images are jpg, conver them to pngs instead of symlinking
