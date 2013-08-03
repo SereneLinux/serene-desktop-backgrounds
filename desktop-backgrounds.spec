@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        19.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -194,6 +194,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 19.0.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Wed May 22 2013 Martin Sourada <mso@fedoraproject.org> - 19.0.0-2
 - Rebuild against new schroedinger-cat-backgrounds
 
