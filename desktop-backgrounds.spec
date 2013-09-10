@@ -197,6 +197,9 @@ fi
 * Tue Sep 10 2013 Martin Sourada <mso@fedoraproject.org> - 20.0.0-1
 - Switch to Heisenbug.
 
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 19.0.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Wed May 22 2013 Martin Sourada <mso@fedoraproject.org> - 19.0.0-2
 - Rebuild against new schroedinger-cat-backgrounds
 
