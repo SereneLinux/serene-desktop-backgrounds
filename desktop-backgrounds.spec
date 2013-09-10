@@ -1,12 +1,12 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name schroedinger-cat
-%global gnome_default default-animated
-%global picture_ext jpg
+%global fedora_release_name heisenbug
+%global gnome_default default
+%global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        19.0.0
-Release:        2%{?dist}
+Version:        20.0.0
+Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -194,6 +194,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Tue Sep 10 2013 Martin Sourada <mso@fedoraproject.org> - 20.0.0-1
+- Switch to Heisenbug.
+
 * Wed May 22 2013 Martin Sourada <mso@fedoraproject.org> - 19.0.0-2
 - Rebuild against new schroedinger-cat-backgrounds
 
