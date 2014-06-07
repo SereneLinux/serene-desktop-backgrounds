@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        20.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -194,6 +194,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 20.0.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Tue Sep 10 2013 Martin Sourada <mso@fedoraproject.org> - 20.0.0-1
 - Switch to Heisenbug.
 
