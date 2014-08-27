@@ -1,12 +1,12 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name heisenbug
+%global fedora_release_name f21
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        20.0.0
-Release:        2%{?dist}
+Version:        21.0.0
+Release:        0%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
