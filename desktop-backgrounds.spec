@@ -1,11 +1,11 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f21
+%global fedora_release_name f22
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        21.0.0
+Version:        22.0.0
 Release:        0%{?dist}
 Summary:        Desktop backgrounds
 
@@ -194,6 +194,12 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Thu Feb 26 2014 Martin Sourada <mso@fedoraproject.org> - 22.0.0-1
+- Enable F22 theme.
+
+* Wed Oct 27 2014 Martin Sourada <mso@fedoraproject.org> - 21.0.0-1
+- Enable F21 theme.
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 20.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
