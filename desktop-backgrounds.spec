@@ -194,7 +194,7 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
-* Thu Feb 26 2014 Martin Sourada <mso@fedoraproject.org> - 22.0.0-1
+* Thu Feb 26 2015 Martin Sourada <mso@fedoraproject.org> - 22.0.0-1
 - Enable F22 theme.
 
 * Wed Oct 27 2014 Martin Sourada <mso@fedoraproject.org> - 21.0.0-1
