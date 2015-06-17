@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        22.0.0
-Release:        0%{?dist}
+Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -194,6 +194,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 22.0.0-1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Thu Feb 26 2015 Martin Sourada <mso@fedoraproject.org> - 22.0.0-1
 - Enable F22 theme.
 
