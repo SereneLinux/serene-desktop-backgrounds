@@ -1,11 +1,11 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f22
+%global fedora_release_name f23
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        22.0.0
+Version:        23.0.0
 Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
@@ -194,6 +194,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Wed Aug 05 2015 Adam Williamson <awilliam@redhat.com> - 23.0.0-1
+- Enable F23 theme.
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 22.0.0-1
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
