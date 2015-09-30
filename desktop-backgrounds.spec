@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        23.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -128,6 +128,14 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
     $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
 /bin/echo "picture-uri='file://%{_datadir}/backgrounds/%{fedora_release_name}/%{gnome_default}/%{fedora_release_name}.xml'" >> \
     $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
+# Use the Fedora background on the GNOME lockscreen as well. Would be awesome to
+# have a separate image here to complement the default Fedora background, rather
+# than using the same image in both places, but previously we've mixed Fedora
+# desktop backgrounds with GNOME lockscreens, and they just do not match at all.
+/bin/echo '[org.gnome.desktop.screensaver]' > \
+    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.screensaver.fedora.gschema.override
+/bin/echo "picture-uri='file://%{_datadir}/backgrounds/%{fedora_release_name}/%{gnome_default}/%{fedora_release_name}.xml'" >> \
+    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.screensaver.fedora.gschema.override
 #   for KDE, this is handled in kde-settings
 #   for XFCE, LXDE, etc.
 %if %{picture_ext} == png
@@ -194,6 +202,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Tue Sep 29 2015 Michael Catanzaro <mcatanzaro@gnome.org> - 23.0.0-2
+- Use Fedora theme for GNOME lockscreen as well.
+
 * Wed Aug 05 2015 Adam Williamson <awilliam@redhat.com> - 23.0.0-1
 - Enable F23 theme.
 
