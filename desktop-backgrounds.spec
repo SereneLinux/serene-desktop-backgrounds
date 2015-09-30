@@ -196,6 +196,7 @@ fi
 
 %files gnome
 %{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
+%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.screensaver.fedora.gschema.override
 
 %files compat
 %{_datadir}/backgrounds/images/default*
