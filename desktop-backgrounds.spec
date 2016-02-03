@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        23.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -203,6 +203,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 23.0.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Tue Sep 29 2015 Michael Catanzaro <mcatanzaro@gnome.org> - 23.0.0-2
 - Use Fedora theme for GNOME lockscreen as well.
 
