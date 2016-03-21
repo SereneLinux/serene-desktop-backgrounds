@@ -1,12 +1,12 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f23
+%global fedora_release_name f24
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        23.0.0
-Release:        3%{?dist}
+Version:        24.0.0
+Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -203,6 +203,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Mon Mar 21 2016 Paul W. Frields <stickster@gmail.com> - 24.0.0-1
+- Enable F24 theme
+
 * Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 23.0.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
