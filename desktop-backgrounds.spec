@@ -1,11 +1,11 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f24
+%global fedora_release_name f25
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        24.0.0
+Version:        25.0.0
 Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
@@ -203,6 +203,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Fri Sep 23 2016 Luya Tshimbalanga <luya@fedoraproject.org> - 25.0.0-1
+- Enable F25 theme
+
 * Mon Mar 21 2016 Paul W. Frields <stickster@gmail.com> - 24.0.0-1
 - Enable F24 theme
 
