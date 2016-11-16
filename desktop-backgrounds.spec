@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        25.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -99,6 +99,14 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/gnome-background-properties
 cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/desktop-backgrounds-basic.xml $RPM_BUILD_ROOT%{_prefix}/share/gnome-background-properties
 cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/desktop-backgrounds-waves.xml $RPM_BUILD_ROOT%{_prefix}/share/gnome-background-properties
 
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/mate-background-properties
+sed -e '/DOCTYPE/s/gnome/mate/' \
+    $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/desktop-backgrounds-basic.xml \
+    > $RPM_BUILD_ROOT%{_prefix}/share/mate-background-properties/desktop-backgrounds-basic.xml
+sed -e '/DOCTYPE/s/gnome/mate/' \
+    $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/desktop-backgrounds-waves.xml \
+    > $RPM_BUILD_ROOT%{_prefix}/share/mate-background-properties/desktop-backgrounds-waves.xml
+
 bgdir=$RPM_BUILD_ROOT%{_datadir}/backgrounds
 for I in tiles/Propaganda images/dewdop_leaf.jpg images/dragonfly.jpg images/frosty_pipes.jpg images/in_flight.jpg images/leaf_veins.jpg \
         images/leafdrops.jpg images/lightrays-transparent.png images/lightrays.png images/lightrays2.png images/raingutter.jpg images/riverstreet_rail.jpg \
@@ -185,6 +193,8 @@ fi
 %{_datadir}/backgrounds/images/tiny_blast_of_red.jpg
 %dir %{_datadir}/gnome-background-properties
 %{_datadir}/gnome-background-properties/desktop-backgrounds-basic.xml
+%dir %{_datadir}/mate-background-properties
+%{_datadir}/mate-background-properties/desktop-backgrounds-basic.xml
 %dir %{_datadir}/wallpapers
 
 %files waves
@@ -192,6 +202,7 @@ fi
 %{_datadir}/backgrounds/waves/*.png
 %{_datadir}/backgrounds/waves/waves.xml
 %{_datadir}/gnome-background-properties/desktop-backgrounds-waves.xml
+%{_datadir}/mate-background-properties/desktop-backgrounds-waves.xml
 %{_datadir}/wallpapers/Fedora_Waves
 
 %files gnome
@@ -203,6 +214,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Wed Nov 16 2016 Yaakov Selkowitz <yselkowi@redhat.com> - 25.0.0-2
+- Enable support for MATE desktop (#1395507)
+
 * Fri Sep 23 2016 Luya Tshimbalanga <luya@fedoraproject.org> - 25.0.0-1
 - Enable F25 theme
 
