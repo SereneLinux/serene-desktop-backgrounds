@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        25.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -214,6 +214,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 25.0.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Wed Nov 16 2016 Yaakov Selkowitz <yselkowi@redhat.com> - 25.0.0-2
 - Enable support for MATE desktop (#1395507)
 
