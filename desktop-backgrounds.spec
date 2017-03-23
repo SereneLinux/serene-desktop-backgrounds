@@ -1,12 +1,12 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f25
+%global fedora_release_name f26
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        25.0.0
-Release:        3%{?dist}
+Version:        26.0.0
+Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -214,6 +214,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Wed Mar 22 2017 Luya Tshimbalanga <luya@fedoraproject.org> - 26.0.0-1
+- Enable F26 theme
+
 * Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 25.0.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
@@ -413,7 +416,7 @@ fi
 - need to include less infinity backgrounds for now; the space usage
   kill livecds
 
-* Wed Aug 28 2007 Máirín Duffy <duffy@redhat.com> - 7.92-1
+* Wed Aug 29 2007 Máirín Duffy <duffy@redhat.com> - 7.92-1
 - Add Infinity background
 
 * Wed Aug  8 2007 Matthias Clasen <mclasen@redhat.com> - 2.0-38
