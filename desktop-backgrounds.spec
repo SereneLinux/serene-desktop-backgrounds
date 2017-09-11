@@ -1,12 +1,12 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f26
+%global fedora_release_name f27
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        26.0.0
-Release:        2%{?dist}
+Version:        27.0.0
+Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -214,6 +214,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Mon Sep 11 2017 Luya Tshimbalanga <luya@fedoraproject.org> - 27.0.0-1
+- Enable F27 theme
+
 * Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 26.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
