@@ -86,25 +86,25 @@ tar xjf %{SOURCE5}
 mkdir -p %{buildroot}%{_prefix}/share/backgrounds
 cd %{buildroot}%{_prefix}/share/backgrounds
 
-cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/images .
-cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/tiles .
+cp -a %{_builddir}/redhat-backgrounds-%{rh_backgrounds_version}/images .
+cp -a %{_builddir}/redhat-backgrounds-%{rh_backgrounds_version}/tiles .
 
 mkdir waves
 # copy actual image files
-cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/*.png waves
+cp -a %{_builddir}/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/*.png waves
 # copy animation xml file
-cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/waves.xml waves
+cp -a %{_builddir}/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/waves.xml waves
 
 mkdir -p %{buildroot}%{_datadir}/gnome-background-properties
-cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/desktop-backgrounds-basic.xml %{buildroot}%{_prefix}/share/gnome-background-properties
-cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/desktop-backgrounds-waves.xml %{buildroot}%{_prefix}/share/gnome-background-properties
+cp -a %{_builddir}/redhat-backgrounds-%{rh_backgrounds_version}/desktop-backgrounds-basic.xml %{buildroot}%{_prefix}/share/gnome-background-properties
+cp -a %{_builddir}/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/desktop-backgrounds-waves.xml %{buildroot}%{_prefix}/share/gnome-background-properties
 
 mkdir -p %{buildroot}%{_datadir}/mate-background-properties
 sed -e '/DOCTYPE/s/gnome/mate/' \
-    $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/desktop-backgrounds-basic.xml \
+    %{_builddir}/redhat-backgrounds-%{rh_backgrounds_version}/desktop-backgrounds-basic.xml \
     > %{buildroot}%{_prefix}/share/mate-background-properties/desktop-backgrounds-basic.xml
 sed -e '/DOCTYPE/s/gnome/mate/' \
-    $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/desktop-backgrounds-waves.xml \
+    %{_builddir}/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/desktop-backgrounds-waves.xml \
     > %{buildroot}%{_prefix}/share/mate-background-properties/desktop-backgrounds-waves.xml
 
 bgdir=%{buildroot}%{_datadir}/backgrounds
