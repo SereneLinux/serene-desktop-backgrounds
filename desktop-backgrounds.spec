@@ -83,8 +83,8 @@ mv images/space/README* .
 tar xjf %{SOURCE5}
 
 %install
-mkdir -p $RPM_BUILD_ROOT%{_prefix}/share/backgrounds
-cd $RPM_BUILD_ROOT%{_prefix}/share/backgrounds
+mkdir -p %{buildroot}%{_prefix}/share/backgrounds
+cd %{buildroot}%{_prefix}/share/backgrounds
 
 cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/images .
 cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/tiles .
@@ -95,19 +95,19 @@ cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_
 # copy animation xml file
 cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/waves.xml waves
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/gnome-background-properties
-cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/desktop-backgrounds-basic.xml $RPM_BUILD_ROOT%{_prefix}/share/gnome-background-properties
-cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/desktop-backgrounds-waves.xml $RPM_BUILD_ROOT%{_prefix}/share/gnome-background-properties
+mkdir -p %{buildroot}%{_datadir}/gnome-background-properties
+cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/desktop-backgrounds-basic.xml %{buildroot}%{_prefix}/share/gnome-background-properties
+cp -a $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/desktop-backgrounds-waves.xml %{buildroot}%{_prefix}/share/gnome-background-properties
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/mate-background-properties
+mkdir -p %{buildroot}%{_datadir}/mate-background-properties
 sed -e '/DOCTYPE/s/gnome/mate/' \
     $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/desktop-backgrounds-basic.xml \
-    > $RPM_BUILD_ROOT%{_prefix}/share/mate-background-properties/desktop-backgrounds-basic.xml
+    > %{buildroot}%{_prefix}/share/mate-background-properties/desktop-backgrounds-basic.xml
 sed -e '/DOCTYPE/s/gnome/mate/' \
     $RPM_BUILD_DIR/redhat-backgrounds-%{rh_backgrounds_version}/waves-%{waves_version}/desktop-backgrounds-waves.xml \
-    > $RPM_BUILD_ROOT%{_prefix}/share/mate-background-properties/desktop-backgrounds-waves.xml
+    > %{buildroot}%{_prefix}/share/mate-background-properties/desktop-backgrounds-waves.xml
 
-bgdir=$RPM_BUILD_ROOT%{_datadir}/backgrounds
+bgdir=%{buildroot}%{_datadir}/backgrounds
 for I in tiles/Propaganda images/dewdop_leaf.jpg images/dragonfly.jpg images/frosty_pipes.jpg images/in_flight.jpg images/leaf_veins.jpg \
         images/leafdrops.jpg images/lightrays-transparent.png images/lightrays.png images/lightrays2.png images/raingutter.jpg images/riverstreet_rail.jpg \
         images/sneaking_branch.jpg images/space images/yellow_flower.jpg; do
@@ -115,11 +115,11 @@ for I in tiles/Propaganda images/dewdop_leaf.jpg images/dragonfly.jpg images/fro
 done
 
 # FedoraWaves theme for KDE4
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/wallpapers/Fedora_Waves/contents/images
-install -m 644 -p %{SOURCE6} $RPM_BUILD_ROOT%{_datadir}/wallpapers/Fedora_Waves/metadata.desktop
-(cd $RPM_BUILD_ROOT%{_datadir}/wallpapers/Fedora_Waves/contents/;
+mkdir -p %{buildroot}%{_datadir}/wallpapers/Fedora_Waves/contents/images
+install -m 644 -p %{SOURCE6} %{buildroot}%{_datadir}/wallpapers/Fedora_Waves/metadata.desktop
+(cd %{buildroot}%{_datadir}/wallpapers/Fedora_Waves/contents/;
 ln -s ../../../backgrounds/waves/waves-eeepc-3-night.png screenshot.png
-cd $RPM_BUILD_ROOT%{_datadir}/wallpapers/Fedora_Waves/contents/images
+cd %{buildroot}%{_datadir}/wallpapers/Fedora_Waves/contents/images
 ln -s ../../../../backgrounds/waves/waves-normal-3-night.png 1024x768.png
 ln -s ../../../../backgrounds/waves/waves-wide-3-night.png 1280x800.png
 # FIXME: there doesn't seem to be a 5:4 image in the latest iteration
@@ -131,23 +131,23 @@ ln -s ../../../../backgrounds/waves/waves-wide-3-night.png 1920x1200.png
 
 # Defalts for various desktops:
 #   for GNOME
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
+mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 /bin/echo '[org.gnome.desktop.background]' > \
-    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
+    %{buildroot}%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
 /bin/echo "picture-uri='file://%{_datadir}/backgrounds/%{fedora_release_name}/%{gnome_default}/%{fedora_release_name}.xml'" >> \
-    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
+    %{buildroot}%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.background.fedora.gschema.override
 # Use the Fedora background on the GNOME lockscreen as well. Would be awesome to
 # have a separate image here to complement the default Fedora background, rather
 # than using the same image in both places, but previously we've mixed Fedora
 # desktop backgrounds with GNOME lockscreens, and they just do not match at all.
 /bin/echo '[org.gnome.desktop.screensaver]' > \
-    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.screensaver.fedora.gschema.override
+    %{buildroot}%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.screensaver.fedora.gschema.override
 /bin/echo "picture-uri='file://%{_datadir}/backgrounds/%{fedora_release_name}/%{gnome_default}/%{fedora_release_name}.xml'" >> \
-    $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.screensaver.fedora.gschema.override
+    %{buildroot}%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.screensaver.fedora.gschema.override
 #   for KDE, this is handled in kde-settings
 #   for XFCE, LXDE, etc.
 %if %{picture_ext} == png
-  (cd $RPM_BUILD_ROOT%{_datadir}/backgrounds/images;
+  (cd %{buildroot}%{_datadir}/backgrounds/images;
   ln -s ../%{fedora_release_name}/default/standard/%{fedora_release_name}.png\
       default.png
   ln -s ../%{fedora_release_name}/default/normalish/%{fedora_release_name}.png \
@@ -159,7 +159,7 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
       default.png
   )
 %else
-  (cd $RPM_BUILD_ROOT%{_datadir}/backgrounds/images;
+  (cd %{buildroot}%{_datadir}/backgrounds/images;
   convert %{_datadir}/backgrounds/%{fedora_release_name}/default/standard/%{fedora_release_name}.%{picture_ext}\
         -alpha off default.png
   convert %{_datadir}/backgrounds/%{fedora_release_name}/default/normalish/%{fedora_release_name}.%{picture_ext}\
