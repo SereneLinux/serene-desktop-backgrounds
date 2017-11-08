@@ -72,7 +72,7 @@ which were used in Fedora 9.
 %setup -qn redhat-backgrounds-%{rh_backgrounds_version}
 
 # move things where %%doc can find them
-cp %{SOURCE3} .
+cp -a %{SOURCE3} .
 mv images/space/*.ps .
 mv images/space/README* .
 
