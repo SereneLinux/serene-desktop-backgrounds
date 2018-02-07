@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        27.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -214,6 +214,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 27.0.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Mon Sep 11 2017 Luya Tshimbalanga <luya@fedoraproject.org> - 27.0.0-1
 - Enable F27 theme
 
