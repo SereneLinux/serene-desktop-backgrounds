@@ -1,12 +1,12 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f27
+%global fedora_release_name f28
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        27.0.0
-Release:        2%{?dist}
+Version:        28.0.0
+Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -69,7 +69,7 @@ which were used in Fedora 9.
 
 
 %prep
-%setup -qn redhat-backgrounds-%{rh_backgrounds_version}
+%autosetup -n redhat-backgrounds-%{rh_backgrounds_version}
 
 # move things where %%doc can find them
 cp -a %{SOURCE3} .
@@ -214,6 +214,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Mon Mar 05 2018 Luya Tshimbalanga <luya@fedoraproject.org> - 28.0.0-1
+- Enable F28 theme
+
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 27.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
