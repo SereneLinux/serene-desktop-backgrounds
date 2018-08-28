@@ -1,11 +1,11 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f28
+%global fedora_release_name f29
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        28.0.0
+Version:        29.0.0
 Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
@@ -214,6 +214,9 @@ fi
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Tue Aug 28 2018 Luya Tshimbalanga <luya@fedoraproject.org> - 29.0.0-1
+- Enable F29 theme
+
 * Mon Mar 05 2018 Luya Tshimbalanga <luya@fedoraproject.org> - 28.0.0-1
 - Enable F28 theme
 
