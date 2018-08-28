@@ -217,6 +217,9 @@ fi
 * Tue Aug 28 2018 Luya Tshimbalanga <luya@fedoraproject.org> - 29.0.0-1
 - Enable F29 theme
 
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 28.0.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Mon Mar 05 2018 Luya Tshimbalanga <luya@fedoraproject.org> - 28.0.0-1
 - Enable F28 theme
 
