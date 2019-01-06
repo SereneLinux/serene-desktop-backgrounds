@@ -172,14 +172,6 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
   )
 %endif
 
-%posttrans gnome
-glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
-
-%postun gnome
-if [ $1 -eq 0 ]; then
-  glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
-fi
-
 %files basic
 %dir %{_datadir}/backgrounds
 %dir %{_datadir}/backgrounds/tiles
