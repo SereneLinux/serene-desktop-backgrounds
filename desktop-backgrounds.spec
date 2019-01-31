@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        29.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -206,6 +206,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 29.0.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Tue Aug 28 2018 Luya Tshimbalanga <luya@fedoraproject.org> - 29.0.0-1
 - Enable F29 theme
 
