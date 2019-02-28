@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        29.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -202,10 +202,14 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.screensaver.fedora.gschema.override
 
 %files compat
+%dir %{_datadir}/backgrounds/images/
 %{_datadir}/backgrounds/images/default*
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Thu Feb 28 2019 Robin Lee <cheeselee@fedoraproject.org> - 29.0.0-3
+- Own %%{_datadir}/backgrounds/images/
+
 * Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 29.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
