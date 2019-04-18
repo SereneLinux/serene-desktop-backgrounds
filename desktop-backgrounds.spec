@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        30.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -152,10 +152,12 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
       default.png
   ln -s ../%{fedora_release_name}/default/normalish/%{fedora_release_name}.png \
       default-5_4.png
+  ln -s ../%{fedora_release_name}/default/tv-wide/%{fedora_release_name}.png \
+      default-16_9.png
   ln -s ../%{fedora_release_name}/default/wide/%{fedora_release_name}.png \
       default-16_10.png
   cd ..
-  ln -s ./%{fedora_release_name}/default/standard/%{fedora_release_name}.png \
+  ln -s ./%{fedora_release_name}/default/tv-wide/%{fedora_release_name}.png \
       default.png
   )
 %else
@@ -164,10 +166,12 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
         -alpha off default.png
   convert %{_datadir}/backgrounds/%{fedora_release_name}/default/normalish/%{fedora_release_name}.%{picture_ext}\
         -alpha off default-5_4.png
+  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/tv-wide/%{fedora_release_name}.%{picture_ext}\
+        -alpha off default-16_9.png
   convert %{_datadir}/backgrounds/%{fedora_release_name}/default/wide/%{fedora_release_name}.%{picture_ext}\
         -alpha off default-16_10.png
   cd ..
-  ln -s ./images/default-16_10.png \
+  ln -s ./images/default-16_9.png \
         default.png
   )
 %endif
@@ -207,6 +211,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Mon Mar 04 2019 Luya Tshimbalanga <luya@fedoraproject.org> - 30.0.0-1
+- Add 16:9 wide ratio background and set it as default (#1689409)
+
 * Mon Mar 04 2019 Luya Tshimbalanga <luya@fedoraproject.org> - 30.0.0-1
 - Enable F30 theme
 
