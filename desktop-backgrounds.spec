@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        30.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -211,6 +211,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Wed Jul 24 2019 Fedora Release Engineering <releng@fedoraproject.org> - 30.0.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
 * Mon Mar 04 2019 Luya Tshimbalanga <luya@fedoraproject.org> - 30.0.0-1
 - Add 16:9 wide ratio background and set it as default (#1689409)
 
