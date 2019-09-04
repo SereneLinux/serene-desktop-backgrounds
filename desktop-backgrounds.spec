@@ -1,12 +1,12 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f30
+%global fedora_release_name f31
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        30.0.0
-Release:        3%{?dist}
+Version:        31.0.0
+Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -211,6 +211,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Tue Sep 03 2019 Luya Tshimbalanga <luya@fedoraproject.org> - 31.0.0-1
+- Enable F31 theme
+
 * Wed Jul 24 2019 Fedora Release Engineering <releng@fedoraproject.org> - 30.0.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
