@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        31.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -211,6 +211,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 31.0.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Tue Sep 03 2019 Luya Tshimbalanga <luya@fedoraproject.org> - 31.0.0-1
 - Enable F31 theme
 
