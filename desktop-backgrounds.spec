@@ -1,12 +1,12 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f31
+%global fedora_release_name f32
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
 Version:        32.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -211,6 +211,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Fri Mar 06 2020 Adam Williamson <awilliam@redhat.com> - 32.0.0-2
+- Fix fedora_release_name which was not updated in -1
+
 * Wed Mar 04 2020 Luya Tshimbalanga <luya@fedoraproject.org> - 32.0.0-1
 - Enable F32 theme
 
