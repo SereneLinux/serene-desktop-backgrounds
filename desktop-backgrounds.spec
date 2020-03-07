@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        32.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -148,16 +148,16 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 #   for XFCE, LXDE, etc.
 %if %{picture_ext} == png
   (cd %{buildroot}%{_datadir}/backgrounds/images;
-  ln -s ../%{fedora_release_name}/default/standard/%{fedora_release_name}.png\
+  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png\
       default.png
-  ln -s ../%{fedora_release_name}/default/normalish/%{fedora_release_name}.png \
+  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png \
       default-5_4.png
-  ln -s ../%{fedora_release_name}/default/tv-wide/%{fedora_release_name}.png \
+  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png \
       default-16_9.png
-  ln -s ../%{fedora_release_name}/default/wide/%{fedora_release_name}.png \
+  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png \
       default-16_10.png
   cd ..
-  ln -s ./%{fedora_release_name}/default/tv-wide/%{fedora_release_name}.png \
+  ln -s ./%{fedora_release_name}/default/%{fedora_release_name}.png \
       default.png
   )
 %else
@@ -211,6 +211,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Sat Mar 07 2020 Adam Williamson <awilliam@redhat.com> - 32.0.0-3
+- Fix up -compat symlinks for removal of aspect ratio-specific images
+
 * Fri Mar 06 2020 Adam Williamson <awilliam@redhat.com> - 32.0.0-2
 - Fix fedora_release_name which was not updated in -1
 
