@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        32.0.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -211,6 +211,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Thu Apr 02 2020 Björn Esser <besser82@fedoraproject.org> - 32.0.0-4
+- Fix string quoting for rpm >= 4.16
+
 * Sat Mar 07 2020 Adam Williamson <awilliam@redhat.com> - 32.0.0-3
 - Fix up -compat symlinks for removal of aspect ratio-specific images
 
