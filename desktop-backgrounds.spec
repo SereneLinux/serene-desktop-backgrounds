@@ -18,7 +18,7 @@ Source6:        FedoraWaves-metadata.desktop
 Source7:        desktop-backgrounds-fedora.xml
 Source8:        fedora-metadata.desktop
 BuildArch:      noarch
-%if %{picture_ext} != png
+%if "x%{?picture_ext}" != "xpng"
 BuildRequires:   ImageMagick
 BuildRequires:   %{fedora_release_name}-backgrounds-base
 %endif
@@ -146,7 +146,7 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
     %{buildroot}%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.screensaver.fedora.gschema.override
 #   for KDE, this is handled in kde-settings
 #   for XFCE, LXDE, etc.
-%if %{picture_ext} == png
+%if "x%{?picture_ext}" != "xpng"
   (cd %{buildroot}%{_datadir}/backgrounds/images;
   ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png\
       default.png
