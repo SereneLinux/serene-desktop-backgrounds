@@ -1,12 +1,12 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f33
+%global fedora_release_name f34
 %global gnome_default default
 %global picture_ext png
 
 Name:           desktop-backgrounds
-Version:        33.0.0
-Release:        2%{?dist}
+Version:        34.0.0
+Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -208,6 +208,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/backgrounds/default.png
 
 %changelog
+* Fri Feb 05 2021 Luya Tshimbalanga <luya@fedoraproject.org> - 34.0.0-1
+- Enable F34 theme
+
 * Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 33.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
