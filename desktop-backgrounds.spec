@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        34.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -173,6 +173,11 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
   )
 %endif
 
+# symlink for a default.xml background
+  cd %{buildroot}%{_datadir}/backgrounds;
+  ln -s %{fedora_release_name}/default/%{fedora_release_name}.xml\
+      default.xml
+
 %files basic
 %dir %{_datadir}/backgrounds
 %dir %{_datadir}/backgrounds/tiles
@@ -206,8 +211,12 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %dir %{_datadir}/backgrounds/images/
 %{_datadir}/backgrounds/images/default*
 %{_datadir}/backgrounds/default.png
+%{_datadir}/backgrounds/default.xml
 
 %changelog
+* Wed Mar 31 2021 Wolfgang Ulbrich <fedora@raveit.de> - 34.0.0-2
+- adding a default.xml background
+
 * Fri Feb 05 2021 Luya Tshimbalanga <luya@fedoraproject.org> - 34.0.0-1
 - Enable F34 theme
 
