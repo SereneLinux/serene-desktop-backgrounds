@@ -215,7 +215,8 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 
 %changelog
 * Wed Mar 31 2021 Wolfgang Ulbrich <fedora@raveit.de> - 34.0.0-2
-- adding a default.xml background
+- Adding a default.xml background
+- Resolves: fedora#1928383 
 
 * Fri Feb 05 2021 Luya Tshimbalanga <luya@fedoraproject.org> - 34.0.0-1
 - Enable F34 theme
