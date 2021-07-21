@@ -6,7 +6,7 @@
 
 Name:           desktop-backgrounds
 Version:        34.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Desktop backgrounds
 
 License:        LGPLv2
@@ -214,6 +214,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/backgrounds/default.xml
 
 %changelog
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 34.0.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Wed Mar 31 2021 Wolfgang Ulbrich <fedora@raveit.de> - 34.0.0-2
 - Adding a default.xml background
 - Resolves: fedora#1928383 
