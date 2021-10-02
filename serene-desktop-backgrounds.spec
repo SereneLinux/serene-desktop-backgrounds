@@ -35,6 +35,7 @@ Provides:       desktop-backgrounds = %{version}-%{release}
 Provides:       serene-desktop-backgrounds = %{version}-%{release}
 Obsoletes:      desktop-backgrounds < %{version}-%{release}
 Obsoletes:      serene-desktop-backgrounds < %{version}-%{release}
+Obsoletes:      desktop-backgrounds
 
 %description    basic
 The desktop-backgrounds-basic package contains artwork intended to be used as
@@ -48,6 +49,7 @@ Requires:       %{fedora_release_name}-backgrounds-gnome
 Requires:       gsettings-desktop-schemas >= 2.91.92
 Provides:       system-backgrounds-gnome = %{version}-%{release}
 Provides:       desktop-backgrounds-gnome = %{version}-%{release}
+Obsoletes:      desktop-backgrounds-gnome
 License:        CC-BY-SA
 
 %description    gnome
@@ -58,6 +60,7 @@ Summary:        The default Fedora wallpaper for less common DEs
 Requires:       %{fedora_release_name}-backgrounds-base
 Provides:       system-backgrounds-compat = %{version}-%{release}
 Provides:       desktop-backgrounds-compat = %{version}-%{release}
+Obsoletes:      desktop-backgrounds-compat
 License:        CC-BY-SA
 
 %description    compat
