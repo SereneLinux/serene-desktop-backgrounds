@@ -4,7 +4,7 @@
 %global gnome_default default
 %global picture_ext png
 
-Name:           desktop-backgrounds
+Name:           serene-desktop-backgrounds
 Version:        35.0.0
 Release:        1%{?dist}
 Summary:        Desktop backgrounds
@@ -21,6 +21,7 @@ BuildArch:      noarch
 %if "x%{?picture_ext}" != "xpng"
 BuildRequires:   ImageMagick
 BuildRequires:   %{fedora_release_name}-backgrounds-base
+Provides:       desktop-backgrounds = %{version}-%{release}
 %endif
 
 %description
@@ -31,7 +32,9 @@ desktop background image.
 %package        basic
 Summary:        Desktop backgrounds
 Provides:       desktop-backgrounds = %{version}-%{release}
+Provides:       serene-desktop-backgrounds = %{version}-%{release}
 Obsoletes:      desktop-backgrounds < %{version}-%{release}
+Obsoletes:      serene-desktop-backgrounds < %{version}-%{release}
 
 %description    basic
 The desktop-backgrounds-basic package contains artwork intended to be used as
@@ -44,6 +47,7 @@ Requires:       %{fedora_release_name}-backgrounds-gnome
 # see gnome bz #633983
 Requires:       gsettings-desktop-schemas >= 2.91.92
 Provides:       system-backgrounds-gnome = %{version}-%{release}
+Provides:       desktop-backgrounds-gnome = %{version}-%{release}
 License:        CC-BY-SA
 
 %description    gnome
@@ -53,6 +57,7 @@ The desktop-backgrounds-gnome package sets default background in gnome.
 Summary:        The default Fedora wallpaper for less common DEs
 Requires:       %{fedora_release_name}-backgrounds-base
 Provides:       system-backgrounds-compat = %{version}-%{release}
+Provides:       desktop-backgrounds-compat = %{version}-%{release}
 License:        CC-BY-SA
 
 %description    compat
@@ -85,6 +90,48 @@ tar xjf %{SOURCE5}
 %install
 mkdir -p %{buildroot}%{_prefix}/share/backgrounds
 cd %{buildroot}%{_prefix}/share/backgrounds
+
+cat <<EOF > %{buildroot}%{_prefix}/share/backgrounds/serenekun.xml
+<background>
+  <starttime>
+    <year>2021</year>
+    <month>10</month>
+    <day>19</day>
+    <hour>8</hour>
+    <minute>00</minute>
+    <second>00</second>
+  </starttime>
+<!-- This animation will start at 8 AM. -->
+
+<!-- We start with day at 8 AM. It will remain up for 10 hours. -->
+<static>
+<duration>36000.0</duration>
+<file>/usr/share/backgrounds/serene/serene-newwallpaper-2.jpg</file>
+</static>
+
+<!-- Day ended and starts to transition to night at 6 PM. The transition lasts for 2 hours, ending at 8 PM. -->
+<transition type="overlay">
+<duration>7200.0</duration>
+<from>/usr/share/backgrounds/serene/serene-newwallpaper-2.jpg</from>
+<to>/usr/share/backgrounds/serene/serene-newwallpaper-3.jpg</to>
+</transition>
+
+<!-- It's 8 PM, we're showing the night till 6 AM. -->
+<static>
+<duration>36000.0</duration>
+<file>/usr/share/backgrounds/serene/serene-newwallpaper-3.jpg</file>
+</static>
+
+<!-- It's 6 AM, and we're starting to transition to day. Transition completes at 8 AM. -->
+<transition type="overlay">
+<duration>7200.0</duration>
+<from>/usr/share/backgrounds/serene/serene-newwallpaper-3.jpg</from>
+<to>/usr/share/backgrounds/serene/serene-newwallpaper-2.jpg</to>
+</transition>
+
+</background>
+
+EOF
 
 cp -a %{_builddir}/redhat-backgrounds-%{rh_backgrounds_version}/images .
 cp -a %{_builddir}/redhat-backgrounds-%{rh_backgrounds_version}/tiles .
@@ -146,36 +193,38 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
     %{buildroot}%{_datadir}/glib-2.0/schemas/10_org.gnome.desktop.screensaver.fedora.gschema.override
 #   for KDE, this is handled in kde-settings
 #   for XFCE, LXDE, etc.
-%if "x%{?picture_ext}" == "xpng"
-  (cd %{buildroot}%{_datadir}/backgrounds/images;
-  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png\
-      default.png
-  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png \
-      default-5_4.png
-  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png \
-      default-16_9.png
-  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png \
-      default-16_10.png
-  cd ..
-  ln -s ./%{fedora_release_name}/default/%{fedora_release_name}.png \
-      default.png
-  )
-%else
-  (cd %{buildroot}%{_datadir}/backgrounds/images;
-  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/%{fedora_release_name}.%{picture_ext}\
-        -alpha off default.png
-  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/%{fedora_release_name}.%{picture_ext}\
-        -alpha off default-5_4.png
-  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/%{fedora_release_name}.%{picture_ext}\
-        -alpha off default-16_9.png
-  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/%{fedora_release_name}.%{picture_ext}\
-        -alpha off default-16_10.png
-  )
-%endif
+#%if "x%{?picture_ext}" == "xpng"
+#  (cd %{buildroot}%{_datadir}/backgrounds/images;
+#  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png\
+#      default.png
+#  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png \
+#      default-5_4.png
+#  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png \
+#      default-16_9.png
+#  ln -s ../%{fedora_release_name}/default/%{fedora_release_name}.png \
+#      default-16_10.png
+#  cd ..
+#  ln -s ./%{fedora_release_name}/default/%{fedora_release_name}.png \
+#      default.png
+#  )
+#%else
+#  (cd %{buildroot}%{_datadir}/backgrounds/images;
+#  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/%{fedora_release_name}.%{picture_ext}\
+#        -alpha off default.png
+#  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/%{fedora_release_name}.%{picture_ext}\
+#        -alpha off default-5_4.png
+#  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/%{fedora_release_name}.%{picture_ext}\
+#        -alpha off default-16_9.png
+#  convert %{_datadir}/backgrounds/%{fedora_release_name}/default/%{fedora_release_name}.%{picture_ext}\
+#        -alpha off default-16_10.png
+#  )
+#%endif
+ln -s %{buildroot}%{_datadir}/backgrounds/serene/serene-newwallpaper-2.jpg \
+  default.jpg
 
 # symlink for a default.xml background
   cd %{buildroot}%{_datadir}/backgrounds;
-  ln -s %{fedora_release_name}/default/%{fedora_release_name}.xml\
+  ln -s serene.xml\
       default.xml
 
 %files basic
@@ -210,8 +259,9 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 %files compat
 %dir %{_datadir}/backgrounds/images/
 %{_datadir}/backgrounds/images/default*
-%{_datadir}/backgrounds/default.png
+%{_datadir}/backgrounds/default.jpg
 %{_datadir}/backgrounds/default.xml
+%{_datadir}/backgrounds/serene.xml
 
 %changelog
 * Thu Aug 26 2021 Luya Tshimbalanga <luya@fedoraproject.org> - 35.0.0-1
