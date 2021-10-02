@@ -91,7 +91,7 @@ tar xjf %{SOURCE5}
 mkdir -p %{buildroot}%{_prefix}/share/backgrounds
 cd %{buildroot}%{_prefix}/share/backgrounds
 
-cat <<EOF > %{buildroot}%{_prefix}/share/backgrounds/serenekun.xml
+cat <<EOF > %{buildroot}%{_prefix}/share/backgrounds/serene.xml
 <background>
   <starttime>
     <year>2021</year>
@@ -219,7 +219,7 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 #        -alpha off default-16_10.png
 #  )
 #%endif
-ln -s %{buildroot}%{_datadir}/backgrounds/serene/serene-newwallpaper-2.jpg \
+ln -s %{_datadir}/backgrounds/serene/serene-newwallpaper-2.jpg \
   default.jpg
 
 # symlink for a default.xml background
@@ -258,7 +258,7 @@ ln -s %{buildroot}%{_datadir}/backgrounds/serene/serene-newwallpaper-2.jpg \
 
 %files compat
 %dir %{_datadir}/backgrounds/images/
-%{_datadir}/backgrounds/images/default*
+# %{_datadir}/backgrounds/images/default*
 %{_datadir}/backgrounds/default.jpg
 %{_datadir}/backgrounds/default.xml
 %{_datadir}/backgrounds/serene.xml
