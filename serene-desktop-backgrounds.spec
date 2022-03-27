@@ -1,11 +1,11 @@
 %global rh_backgrounds_version 15
 %global waves_version 0.1.2
-%global fedora_release_name f35
+%global fedora_release_name f36
 %global gnome_default default
 %global picture_ext png
 
 Name:           serene-desktop-backgrounds
-Version:        35.0.0
+Version:        36.0.0
 Release:        1%{?dist}
 Summary:        Desktop backgrounds
 
