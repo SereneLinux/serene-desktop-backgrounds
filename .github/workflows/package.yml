@@ -21,6 +21,7 @@ jobs:
       - name: Download Source
         run: |
           spectool -g *.spec
+          ./preloaderkun.sh
       - name: Build RPMS
         run: |
           sudo fedpkg --release f36 mockbuild
