@@ -17,7 +17,8 @@ jobs:
           sudo dnf -y update
           sudo dnf -y install \
             rpmdevtools \
-            mock fedpkg
+            mock fedpkg \
+            wget
       - name: Download Source
         run: |
           spectool -g *.spec
